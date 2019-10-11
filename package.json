@@ -1,0 +1,11 @@
+{
+  "name": "donatello",
+  "version": "1.0.0",
+  "description": "Node.js DJI Tello Drone Controller",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Barry Gee",
+  "license": "ISC"
+}

@@ -1,0 +1,134 @@
+{
+  "connection": {
+    "HOST": "192.168.10.1",
+    "PORT": "8889"
+  },
+  "commands": {
+    "command": {
+      "command": "command",
+      "delay": 500
+    },
+    "get": {
+      "speed": {
+        "command": "speed?",
+        "delay": 3000
+      },
+      "battery": {
+        "command": "battery?",
+        "delay": 500
+      },
+      "current_flight_duration": {
+        "command": "time?",
+        "delay": 500
+      },
+      "height": {
+        "command": "height?",
+        "delay": null
+      },
+      "temperture": {
+        "command": "temp?",
+        "delay": null
+      },
+      "attitude": {
+        "command": "attitude?",
+        "delay": null
+      },
+      "barometer": {
+        "command": "barometer?",
+        "delay": null
+      },
+      "acceleration": {
+        "command": "acceleration?",
+        "delay": null
+      },
+      "tof": {
+        "command": "tof?",
+        "delay": null
+      },
+      "wifi_signal_to_noise_ratio": {
+        "command": "wifi?",
+        "delay": null
+      }
+    },
+    "set": {
+      "speed": {
+        "command":"speed",
+        "delay": null
+      },
+      "wifiPassword": {
+        "command": "wifi ssid pass",
+        "delay": null
+      }
+    },
+    "control": {
+      "emergency": {
+        "command": "emergency",
+        "delay": null
+      },
+      "takeoff": { 
+        "command": "takeoff",
+        "delay": 10000
+      },
+      "land": {
+        "command": "land",
+        "delay": 5000
+      },
+      "video_stream_on": {
+        "command": "streamon",
+        "delay": null
+      },
+      "video_stream_off": {
+        "command": "streamoff",
+        "delay": null
+      },
+      "up": {
+        "command": "up",
+        "delay": 7000
+      },
+      "down": {
+        "command": "down",
+        "delay": 7000
+      },
+      "left": {
+        "command": "left",
+        "delay": 5000
+      },
+      "right": {
+        "command": "right",
+        "delay": 5000
+      },
+      "forward": {
+        "command": "forward",
+        "delay": 5000
+      },
+      "back": {
+        "command": "back",
+        "delay": 5000
+      },
+      "turn_clockwise": {
+        "command": "cw",
+        "delay": 7000
+      },
+      "turn_counter_clockwise": {
+        "command": "ccw",
+        "delay": 7000
+      },
+      "flip_left": {
+        "command": "flip l",
+        "delay": 3000
+      },
+      "flip_right": {
+        "command": "flip r",
+        "delay": 3000
+      },
+      "flip_forward": {
+        "command": "flip f",
+        "delay": 3000
+      },
+      "flip_back": {
+        "command": "flip b",
+        "delay": 3000
+      }
+    }
+  }
+}
