@@ -1,6 +1,6 @@
 const { command } = require('./config/drone.json').commands
 
-const { speed, 
+const { get_speed, 
         battery, 
         current_flight_duration, 
         height, 
@@ -13,7 +13,8 @@ const { speed,
         
 const { emergency, 
         takeoff, 
-        land, 
+        land,
+        speed, 
         video_stream_on, 
         video_stream_off, 
         up, 
@@ -35,6 +36,9 @@ static function command() {
   return command
 }
 
+/*
+ control commands
+*/
 static function emergency() {
   return emergency
 }
@@ -45,6 +49,10 @@ static function takeoff() {
 
 static function land() {
   return land
+}
+
+static function speed(value) {
+  return buildCommandObject(speed, value)
 }
 
 static function up(value) {
@@ -77,4 +85,32 @@ static function turn_clockwise(value) {
 
 static function turn_counter_clockwise(value) {
   return buildCommandObject(turn_counter_clockwise, value)
+}
+
+static function flip(direction) {
+
+  switch(direction) {
+    case 'left':
+      return buildCommandObject(flip, 'l')
+
+    case 'right':
+      return buildCommandObject(flip, 'r')
+
+    case 'forward':
+      return buildCommandObject(flip, 'f')
+    
+    case 'back':
+      return buildCommandObject(flip, 'b')
+
+    default:
+        return buildCommandObject(flip, 'b')
+  }
+}
+
+/*
+ information commands
+*/
+
+static function battery() {
+  return battery
 }
