@@ -1,6 +1,6 @@
 const commands = require('./commands')
 
-static function testSequence() {
+function testSequence() {
   return [commands.command(), 
           commands.takeoff(), 
           commands.up(40), 
@@ -11,4 +11,8 @@ static function testSequence() {
           commands.left(40),
           commands.right(40),
           commands.land()]
+}
+
+module.exports = { 
+  testSequence 
 }
