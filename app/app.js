@@ -11,13 +11,13 @@ const drone = new Drone(HOST, PORT)
 
 const testSequence = [command, 
                       takeoff, 
-                      buildCommand(up, 40), 
-                      buildCommand(turn_counter_clockwise, 360), 
-                      buildCommand(turn_clockwise, 360), 
-                      buildCommand(forward, 40), 
-                      buildCommand(back, 40),
-                      buildCommand(left, 10),
-                      buildCommand(right, 10), 
+                      buildCommandObject(up, 40), 
+                      buildCommandObject(turn_counter_clockwise, 360), 
+                      buildCommandObject(turn_clockwise, 360), 
+                      buildCommandObject(forward, 40), 
+                      buildCommandObject(back, 40),
+                      buildCommandObject(left, 10),
+                      buildCommandObject(right, 10), 
                       land]
 
 
@@ -25,7 +25,7 @@ async function go() {
   drone.send(testSequence, HOST, PORT, drone.errorHandler)
 }
 
-function buildCommand(command, value) {
+function buildCommandObject(command, value) {
   return { command: `${command.command} ${value}`, delay: command.delay }
 }
 
