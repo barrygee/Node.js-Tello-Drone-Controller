@@ -1,17 +1,10 @@
-const { HOST, PORT } = require('./config/drone.json').connection
-const commands = require('./drone/commands')
-const { testSequence, launchAndLandSequence } = require('./drone/commandSequences')
+const express        = require('express')
+const app            = express()
+const router         = express.Router
+const appRouter      = require('./appRouter')
 
-const Drone = require('./drone/drone')
+app.use('/', appRouter)
 
-// create new Drone object
-const drone = new Drone(HOST, PORT)
+app.listen(config.server.port, () => console.log(`Server running on localhost:${config.server.port}`))
 
-
-async function go() {
-  console.log(launchAndLandSequence)
-  // drone.send(launchAndLandSequence, HOST, PORT, drone.errorHandler)
-  // drone.send(testSequence(), HOST, PORT, drone.errorHandler)
-}
-
-go()
+module.exports = router

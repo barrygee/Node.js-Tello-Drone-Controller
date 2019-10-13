@@ -1,5 +1,14 @@
 const { command, 
         battery,
+        getSpeed,
+        current_flight_duration,
+        height,
+        temperature,
+        attitude,
+        barometer,
+        acceleration,
+        tof,
+        wifi_signal_to_noise_ratio,
         emergency,
         takeoff,
         land,
@@ -14,9 +23,13 @@ const { command,
         turn_counter_clockwise,
         flip } = require('./commands')
 
+const abort = [command(),
+               emergency()]
+
 const testSequence = [command(), 
                       takeoff(), 
-                      up(40), 
+                      up(40),
+                      down(40), 
                       turn_clockwise(360),
                       turn_counter_clockwise(360),
                       forward(40),
@@ -32,6 +45,7 @@ const launchAndLandSequence = [command(),
                                land()]
 
 module.exports = { 
+  abort,
   testSequence,
   launchAndLandSequence
 }
