@@ -1,18 +1,37 @@
-const commands = require('./commands')
+const { command, 
+        battery,
+        emergency,
+        takeoff,
+        land,
+        speed,
+        up,
+        down,
+        forward,
+        back,
+        left,
+        right,
+        turn_clockwise,
+        turn_counter_clockwise,
+        flip } = require('./commands')
 
-function testSequence() {
-  return [commands.command(), 
-          commands.takeoff(), 
-          commands.up(40), 
-          commands.turn_clockwise(360),
-          commands.turn_counter_clockwise(360),
-          commands.forward(40),
-          commands.back(40),
-          commands.left(40),
-          commands.right(40),
-          commands.land()]
-}
+const testSequence = [command(), 
+                      takeoff(), 
+                      up(40), 
+                      turn_clockwise(360),
+                      turn_counter_clockwise(360),
+                      forward(40),
+                      back(40),
+                      left(40),
+                      right(40),
+                      land()]
+
+const launchAndLandSequence = [command(), 
+                               takeoff(), 
+                               turn_clockwise(360),
+                               turn_counter_clockwise(360),
+                               land()]
 
 module.exports = { 
-  testSequence 
+  testSequence,
+  launchAndLandSequence
 }

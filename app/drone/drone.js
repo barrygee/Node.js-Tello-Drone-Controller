@@ -31,7 +31,7 @@ class Drone {
       console.log(`Running command ${commands[i].command}, with delay of ${commands[i].delay}`)
       
       const { command, delay } = commands[i]
-      
+
       this.UDPSocket.send(command, 0, command.length, PORT, HOST, errorHandler)
 
       await wait(delay)

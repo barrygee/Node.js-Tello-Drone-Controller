@@ -113,6 +113,10 @@
         "command": "ccw",
         "delay": 7000
       },
+      "flip": {
+        "command": "flip",
+        "delay": 3000
+      },
       "flip_left": {
         "command": "flip l",
         "delay": 3000
