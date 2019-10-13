@@ -2,6 +2,7 @@ const express        = require('express')
 const app            = express()
 const router         = express.Router
 const appRouter      = require('./appRouter')
+const config         = require('./config/config.json')
 
 app.use('/', appRouter)
 

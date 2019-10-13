@@ -15,9 +15,26 @@ router.get('/', (req, res) => {
   res.send('App ui')
 })
 
+
 // send a command sequence to the drone
-router.get('/command?commandSequence', (req, res) => {
-  drone.send(req.params.commandSequence, 
+router.get('/command', (req, res) => {
+
+  // switch needs refactoring - cleaner solution needed
+  let commandSequence
+
+  switch(req.query.commandSequence) {
+    case 'launchAndLandSequence': 
+      commandSequence = launchAndLandSequence
+      break
+    case 'abort': 
+      commandSequence = abort
+      break
+    case 'testSequence': 
+      commandSequence = testSequence
+      break
+  }
+
+  drone.send(commandSequence, 
              drone.host, 
              drone.port, 
              drone.errorHandler)
@@ -26,6 +43,6 @@ router.get('/command?commandSequence', (req, res) => {
 })
 
 // catch all undefined routes - redirect back to the default route
-router.get('*', (req, res) => res.redirect('/'))
+// router.get('*', (req, res) => res.redirect('/'))
 
 module.exports = router;

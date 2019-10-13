@@ -5,7 +5,7 @@ function buildCommandObject(command, value) {
 }
 
 function command() {
-  return trigger.command
+  return trigger
 }
 
 /*

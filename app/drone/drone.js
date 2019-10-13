@@ -23,7 +23,6 @@ class Drone {
   }
 
   async send(commands, HOST, PORT, errorHandler) {
-
     let i = 0
 
     while(i <= commands.length) {
