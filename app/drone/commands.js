@@ -1,125 +1,116 @@
-const { trigger, get, control } = require('../config/drone.json').commands
+function buildCommandObject(obj) {
+  const { command, value, delay } = obj
 
-function buildCommandObject(command, value) {
-  return { command: `${command.command} ${value}`, delay: command.delay }
+  return value ? { command: `${command} ${value}`, delay: delay } : { command: command, delay: delay }
 }
 
 function command() {
-  return trigger
+  return buildCommandObject({ 'command': 'command', 'value': null, 'delay': 500 })
 }
 
 /*
   information commands
 */
 function battery() {
-  return get.battery
+  return buildCommandObject({ 'command': 'battery?', 'value': null, 'delay': 500 })
 }
 
 function getSpeed() {
-  return get.speed
+  return buildCommandObject({ 'command': 'speed?', 'value': null, 'delay': 3000 })
 }
 
 function current_flight_duration() {
-  return get.current_flight_duration
+  return buildCommandObject({ 'command': 'time?', 'value': null, 'delay': 500 })
 }
 
 function height() {
-  return get.height
+  return buildCommandObject({ 'command': 'height?', 'value': null, 'delay': null })
 }
 
 function temperature() {
-  return get.temperature
+  return buildCommandObject({ 'command': 'temp?', 'value': null, 'delay': null })
 }
 
 function attitude() {
-  return get.attitude
+  return buildCommandObject({ 'command': 'attitude?', 'value': null, 'delay': null })
 }
 
 function barometer() {
-  return get.barometer
+  return buildCommandObject({ 'command': 'barometer?', 'value': null, 'delay': null })
 }
 
 function acceleration() {
-  return get.acceleration
+  return buildCommandObject({ 'command': 'acceleration?', 'value': null, 'delay': null })
 }
 
 function tof() {
-  return get.tof
+  return buildCommandObject({ 'command': 'tof?', 'value': null, 'delay': null })
 }
 
 function wifi_signal_to_noise_ratio() {
-  return get.wifi_signal_to_noise_ratio
+  return buildCommandObject({ 'command': 'wifi?', 'value': null, 'delay': null })
 }
 
 /*
   control commands
 */
 function emergency() {
-  return control.emergency
+  return buildCommandObject({ 'command': 'emergency', 'value': null, 'delay': null })
 }
 
 function takeoff() {
-  return control.takeoff
+  return buildCommandObject({ 'command': 'takeoff', 'value': null, 'delay': 10000 })
 }
 
 function land() {
-  return control.land
+  return buildCommandObject({ 'command': 'land', 'value': null, 'delay': 5000 })
 }
 
 function speed(value) {
-  return buildCommandObject(control.speed, value)
+  return buildCommandObject({ 'command': 'speed', 'value': value, 'delay': null })
 }
 
 function up(value) {
-  return buildCommandObject(control.up, value)
+  return buildCommandObject({ 'command': 'up', 'value': value, 'delay': 7000 })
 }
 
 function down(value) {
-  return buildCommandObject(control.down, value)
+  return buildCommandObject({ 'command': 'down', 'value': value, 'delay': 7000 })
 }
 
 function forward(value) {
-  return buildCommandObject(control.forward, value)
+  return buildCommandObject({ 'command': 'forward', 'value': value, 'delay': 5000 })
 }
 
 function back(value) {
-  return buildCommandObject(control.back, value)
+  return buildCommandObject({ 'command': 'back', 'value': value, 'delay': 5000 })
 }
 
 function left(value) {
-  return buildCommandObject(control.left, value)
+  return buildCommandObject({ 'command': 'left', 'value': value, 'delay': 5000 })
 }
 
 function right(value) {
-  return buildCommandObject(control.right, value)
+  return buildCommandObject({ 'command': 'right', value: value, 'delay': 5000 })
 }
 
 function turn_clockwise(value) {
-  return buildCommandObject(control.turn_clockwise, value)
+  return buildCommandObject({ 'command': 'cw', 'value': value, 'delay': 7000 })
 }
 
 function turn_counter_clockwise(value) {
-  return buildCommandObject(control.turn_counter_clockwise, value)
+  return buildCommandObject({ 'command': 'ccw', 'value': value, 'delay': 7000 })
 }
 
+/*
+  direction options
+    'l' - left
+    'r' - right
+    'f' - forward
+    'b' - back
+*/
 function flip(direction) {
-
-  switch(direction) {
-    case 'left':
-      return buildCommandObject(control.flip, 'l')
-
-    case 'right':
-      return buildCommandObject(control.flip, 'r')
-
-    case 'forward':
-      return buildCommandObject(control.flip, 'f')
-    
-    case 'back':
-      return buildCommandObject(control.flip, 'b')
-
-    default:
-        return buildCommandObject(control.flip, 'b')
-  }
+  return buildCommandObject({ 'command': 'flip', 'value': direction, 'delay': 3000 })
 }
 
 module.exports = { 

@@ -1,11 +1,12 @@
 const dgram = require('dgram') // interact with UDP in NodeJS
 const { wait } = require('../utils')
+const { abort, testSequence, launchAndLandSequence } = require('./commandSequences')
 
 class Drone {
 
-  constructor(HOST, PORT) {
-    this.host = HOST
-    this.port = PORT
+  constructor(host, port) {
+    this.host = host
+    this.port = port
     this.connectToDrone(dgram, this.port)
   }
 
@@ -22,25 +23,44 @@ class Drone {
     console.log(`Message From drone: ${message}`)
   }
 
-  async send(commands, HOST, PORT, errorHandler) {
-    let i = 0
+  async send(commandSequence, host, port, errorHandler) {
 
-    while(i <= commands.length) {
+    for(let command of commandSequence) {
 
-      console.log(`Running command ${commands[i].command}, with delay of ${commands[i].delay}`)
+      console.log(`Running command: ${command.command}, with delay of ${command.delay} milliseconds`)
       
-      const { command, delay } = commands[i]
+      this.UDPSocket.send(command.command, 0, command.command.length, port, host, errorHandler)
 
-      this.UDPSocket.send(command, 0, command.length, PORT, HOST, errorHandler)
-
-      await wait(delay)
-
-      i += 1
-    }
+      await wait(command.delay)
+    } 
   }
 
   errorHandler(error) {
     throw new Error(error)
+  }
+
+  convertToCommandSequence(commandSequenceName) {
+
+    let commandSequence
+
+    switch(commandSequenceName) {
+      case 'launchAndLandSequence': 
+        commandSequence = launchAndLandSequence
+        break
+
+      case 'abort': 
+        commandSequence = abort
+        break
+
+      case 'testSequence': 
+        commandSequence = testSequence
+        break
+
+      default:
+        throw new Error('Unrecognised command sequence name provided')
+    }
+
+    return commandSequence
   }
 }
 
