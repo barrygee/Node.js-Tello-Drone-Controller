@@ -1,105 +1,99 @@
-function buildCommandObject(obj) {
-  const { command, value, delay } = obj
-
-  return value ? { command: `${command} ${value}`, delay: delay } : { command: command, delay: delay }
-}
-
 function command() {
-  return buildCommandObject({ 'command': 'command', 'value': null, 'delay': 500 })
+  return { 'command': 'command', 'delay': 500 }
 }
 
 /*
   information commands
 */
 function battery() {
-  return buildCommandObject({ 'command': 'battery?', 'value': null, 'delay': 500 })
+  return { 'command': 'battery?', 'delay': 500 }
 }
 
 function getSpeed() {
-  return buildCommandObject({ 'command': 'speed?', 'value': null, 'delay': 3000 })
+  return { 'command': 'speed?', 'delay': 3000 }
 }
 
 function current_flight_duration() {
-  return buildCommandObject({ 'command': 'time?', 'value': null, 'delay': 500 })
+  return { 'command': 'time?', 'delay': 500 }
 }
 
 function height() {
-  return buildCommandObject({ 'command': 'height?', 'value': null, 'delay': null })
+  return { 'command': 'height?', 'delay': null }
 }
 
 function temperature() {
-  return buildCommandObject({ 'command': 'temp?', 'value': null, 'delay': null })
+  return { 'command': 'temp?', 'delay': null }
 }
 
 function attitude() {
-  return buildCommandObject({ 'command': 'attitude?', 'value': null, 'delay': null })
+  return { 'command': 'attitude?', 'delay': null }
 }
 
 function barometer() {
-  return buildCommandObject({ 'command': 'barometer?', 'value': null, 'delay': null })
+  return { 'command': 'barometer?', 'delay': null }
 }
 
 function acceleration() {
-  return buildCommandObject({ 'command': 'acceleration?', 'value': null, 'delay': null })
+  return { 'command': 'acceleration?', 'delay': null }
 }
 
 function tof() {
-  return buildCommandObject({ 'command': 'tof?', 'value': null, 'delay': null })
+  return { 'command': 'tof?', 'delay': null }
 }
 
 function wifi_signal_to_noise_ratio() {
-  return buildCommandObject({ 'command': 'wifi?', 'value': null, 'delay': null })
+  return { 'command': 'wifi?', 'delay': null }
 }
 
 /*
   control commands
 */
 function emergency() {
-  return buildCommandObject({ 'command': 'emergency', 'value': null, 'delay': null })
+  return { 'command': 'emergency', 'delay': null }
 }
 
 function takeoff() {
-  return buildCommandObject({ 'command': 'takeoff', 'value': null, 'delay': 10000 })
+  return { 'command': 'takeoff', 'delay': 10000 }
 }
 
 function land() {
-  return buildCommandObject({ 'command': 'land', 'value': null, 'delay': 5000 })
+  return { 'command': 'land', 'delay': 5000 }
 }
 
 function speed(value) {
-  return buildCommandObject({ 'command': 'speed', 'value': value, 'delay': null })
+  return { 'command': `speed ${value}`, 'delay': null }
 }
 
 function up(value) {
-  return buildCommandObject({ 'command': 'up', 'value': value, 'delay': 7000 })
+  return { 'command': `up ${value}`, 'delay': 7000 }
 }
 
 function down(value) {
-  return buildCommandObject({ 'command': 'down', 'value': value, 'delay': 7000 })
+  return { 'command': `down ${value}`, 'delay': 7000 }
 }
 
 function forward(value) {
-  return buildCommandObject({ 'command': 'forward', 'value': value, 'delay': 5000 })
+  return { 'command': `forward ${value}`, 'delay': 5000 }
 }
 
 function back(value) {
-  return buildCommandObject({ 'command': 'back', 'value': value, 'delay': 5000 })
+  return { 'command': `back ${value}`, 'delay': 5000 }
 }
 
 function left(value) {
-  return buildCommandObject({ 'command': 'left', 'value': value, 'delay': 5000 })
+  return { 'command': `left ${value}`, 'delay': 5000 }
 }
 
 function right(value) {
-  return buildCommandObject({ 'command': 'right', value: value, 'delay': 5000 })
+  return { 'command': `right ${value}`, value: value, 'delay': 5000 }
 }
 
 function turn_clockwise(value) {
-  return buildCommandObject({ 'command': 'cw', 'value': value, 'delay': 7000 })
+  return { 'command': `cw ${value}`, 'delay': 7000 }
 }
 
 function turn_counter_clockwise(value) {
-  return buildCommandObject({ 'command': 'ccw', 'value': value, 'delay': 7000 })
+  return { 'command': `ccw ${value}`, 'delay': 7000 }
 }
 
 /*
@@ -110,7 +104,7 @@ function turn_counter_clockwise(value) {
     'b' - back
 */
 function flip(direction) {
-  return buildCommandObject({ 'command': 'flip', 'value': direction, 'delay': 3000 })
+  return { 'command': `flip ${direction}`, 'delay': 3000 }
 }
 
 module.exports = { 
