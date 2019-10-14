@@ -31,4 +31,4 @@ router.get('/command', (req, res) => {
        .catch(error => console.log(`There was an error ${error}`))
 })
 
-module.exports = router;
+module.exports = router
