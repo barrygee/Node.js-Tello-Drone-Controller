@@ -23,6 +23,16 @@ const { command,
         turn_counter_clockwise,
         flip } = require('./commands')
 
+const streamDroneStatus = [command(),
+                           battery(),
+                           temperature(),
+                           height(),
+                           getSpeed(),
+                           current_flight_duration(),
+                           acceleration(),
+                           attitude(),
+                           barometer()]
+
 const abort = [command(),
                emergency()]
 
@@ -45,6 +55,7 @@ const launchAndLandSequence = [command(),
                                land()]
 
 module.exports = { 
+  streamDroneStatus,
   abort,
   testSequence,
   launchAndLandSequence

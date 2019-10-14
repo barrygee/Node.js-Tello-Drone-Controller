@@ -10,7 +10,12 @@ const drone = new Drone(host, port)
 
 // default route
 router.get('/', (req, res) => {
-  res.send('App ui')
+  drone.send(drone.convertToCommandSequence('streamDroneStatus'),
+             drone.host,
+             drone.port,
+             drone.errorHandler)
+       .then(() => res.send('App ui'))
+       .catch(error => res.send(`There was an error ${error}`))
 })
 
 
