@@ -23,13 +23,13 @@ class Drone {
     console.log(`Message From drone: ${message}`)
   }
 
-  async send(commandSequence, host, port, errorHandler) {
+  async send(commandSequence, host, port) {
 
     for(let command of commandSequence) {
 
       console.log(`Running command: ${command.command}, with delay of ${command.delay} milliseconds`)
-      
-      this.UDPSocket.send(command.command, 0, command.command.length, port, host, errorHandler)
+ 
+      this.UDPSocket.send(command.command, 0, command.command.length, port, host) // this.errorHandler
 
       await wait(command.delay)
     } 
@@ -42,7 +42,7 @@ class Drone {
   convertToCommandSequence(commandSequenceName) {
 
     let commandSequence
-
+    
     switch(commandSequenceName) {
       case 'streamDroneStatus': 
         commandSequence = streamDroneStatus
