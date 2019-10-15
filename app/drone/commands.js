@@ -24,13 +24,13 @@ function height() {
 function temperature() {
   return { 'command': 'temp?', 'delay': null }
 }
-
+``
 function attitude() {
   return { 'command': 'attitude?', 'delay': null }
 }
 
 function barometer() {
-  return { 'command': 'barometer?', 'delay': null }
+  return { 'command': 'baro?', 'delay': null }
 }
 
 function acceleration() {
