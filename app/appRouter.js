@@ -1,20 +1,24 @@
-const express        = require('express')
-const router         = express.Router()
+const express    = require('express')
+const router     = express.Router()
 
-const Drone          = require('./drone/drone')
-const { host, port } = require('./config/drone.json').connection
-
-// create new Drone object
-const drone = new Drone(host, port)
+const Drone      = require('./drone/drone')
+const { host, port, state } = require('./config/drone.json').connection
 
 
 // default route
 router.get('/', (req, res) => {
+  let drone = new Drone(host, port)
   drone.send(drone.convertToCommandSequence('streamDroneStatus'),
              drone.host,
              drone.port)
        .then(() => res.send('App ui'))
        .catch(error => res.send(`There was an error ${error}`))
+})
+
+
+// default route
+router.get('/state', (req, res) => {
+  let drone = new Drone(host, state.port)
 })
 
 
