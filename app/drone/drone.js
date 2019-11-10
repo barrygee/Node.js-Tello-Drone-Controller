@@ -19,15 +19,6 @@ class Drone {
     this.UDPSocket.on('message', message => this.messageFromDrone(message))
   }
 
-  messageFromDrone(message) {
-    message = this.parseMessageFromDrone(message.toString())
-    console.log(message)
-  }
-
-  parseMessageFromDrone(message) {
-    return message.split(';').map(status => status.split(':'))
-  }
-
   async sendToDrone(commandSequence, host, port) {
 
     for(let command of commandSequence) {
@@ -40,10 +31,6 @@ class Drone {
     } 
   }
 
-  errorHandler(error) {
-    throw new Error(error)
-  }
-
   convertToCommandSequence(commandSequenceName) {
 
     let commandSequence
@@ -53,7 +40,7 @@ class Drone {
       case 'abort': 
         commandSequence = abort
         break
-        
+
       case 'streamDroneStatus': 
         commandSequence = streamDroneStatus
         break
@@ -77,7 +64,18 @@ class Drone {
     return commandSequence
   }
 
-  
+  errorHandler(error) {
+    throw new Error(error)
+  }
+
+  messageFromDrone(message) {
+    message = this.parseMessageFromDrone(message.toString())
+    console.log(message)
+  }
+
+  parseMessageFromDrone(message) {
+    return message.split(';').map(status => status.split(':'))
+  } 
 }
 
 module.exports = Drone
