@@ -20,7 +20,12 @@ class Drone {
   }
 
   messageFromDrone(message) {
-    console.log(`Message From drone: ${message}`)
+    message = this.parseMessageFromDrone(message.toString())
+    console.log(message)
+  }
+
+  parseMessageFromDrone(message) {
+    return message.split(';').map(status => status.split(':'))
   }
 
   async send(commandSequence, host, port) {
@@ -66,6 +71,8 @@ class Drone {
 
     return commandSequence
   }
+
+  
 }
 
 module.exports = Drone
