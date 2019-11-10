@@ -29,7 +29,7 @@ router.get('/state', (req, res) => {
     testSequence
     launchAndLandSequence
 
-  http://localhost:9999/commnads/commands?=testSequence
+  http://localhost:9999/commands?commands=testSequence
 */
 router.get('/commands', (req, res) => {
   drone.sendToDrone(drone.convertToCommandSequence(req.query.commands),
