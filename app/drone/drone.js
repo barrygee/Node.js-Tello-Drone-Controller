@@ -28,7 +28,7 @@ class Drone {
     return message.split(';').map(status => status.split(':'))
   }
 
-  async send(commandSequence, host, port) {
+  async sendToDrone(commandSequence, host, port) {
 
     for(let command of commandSequence) {
 

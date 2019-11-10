@@ -13,7 +13,7 @@ router.get('/', (req, res) => res.send('App ui'))
 // default route
 router.get('/state', (req, res) => {
   let drone = new Drone(host, state.port)
-   drone.send(drone.convertToCommandSequence('streamDroneStatus'),
+   drone.sendToDrone(drone.convertToCommandSequence('streamDroneStatus'),
               drone.host,
               drone.port)
        .then(() => res.send('App ui'))
@@ -32,8 +32,7 @@ router.get('/state', (req, res) => {
   http://localhost:9999/command?commandSequence=testSequence
 */
 router.get('/command', (req, res) => {
-  
-  drone.send(drone.convertToCommandSequence(req.query.commandSequence),
+  drone.sendToDrone(drone.convertToCommandSequence(req.query.commandSequence),
              drone.host,
              drone.port,
              drone.errorHandler)
