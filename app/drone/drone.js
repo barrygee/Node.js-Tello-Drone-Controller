@@ -49,16 +49,17 @@ class Drone {
     let commandSequence
     
     switch(commandSequenceName) {
+
+      case 'abort': 
+        commandSequence = abort
+        break
+        
       case 'streamDroneStatus': 
         commandSequence = streamDroneStatus
         break
 
       case 'launchAndLandSequence': 
         commandSequence = launchAndLandSequence
-        break
-
-      case 'abort': 
-        commandSequence = abort
         break
 
       case 'testSequence': 
