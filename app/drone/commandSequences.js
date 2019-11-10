@@ -54,9 +54,16 @@ const launchAndLandSequence = [command(),
                                turn_counter_clockwise(360),
                                land()]
 
+const launchAndFlip= [command(), 
+                      takeoff(), 
+                      flip('l'),
+                      flip('r'),
+                      land()]
+
 module.exports = { 
   streamDroneStatus,
   abort,
   testSequence,
-  launchAndLandSequence
+  launchAndLandSequence,
+  launchAndFlip
 }
