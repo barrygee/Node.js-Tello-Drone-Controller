@@ -1,6 +1,6 @@
 const dgram = require('dgram') // interact with UDP in NodeJS
 const { wait } = require('../utils')
-const { streamDroneStatus, abort, testSequence, launchAndLandSequence } = require('./commandSequences')
+const { streamDroneStatus, abort, testSequence, launchAndLandSequence, launchAndFlip } = require('./commandSequences')
 
 class Drone {
 
@@ -63,6 +63,10 @@ class Drone {
 
       case 'testSequence': 
         commandSequence = testSequence
+        break
+      
+      case 'flip': 
+        commandSequence = launchAndFlip
         break
 
       default:
